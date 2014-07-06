@@ -1,20 +1,26 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    config: {
+      dir: {
+        src: 'source',
+        dest: 'build'
+      }
+    },
     copy: {
       build: {
         files: [
           {
             expand: true,
-            cwd: 'source/',
+            cwd: '<%= config.dir.src %>/',
             src: ['**'],
-            dest: 'build/'
+            dest: '<%= config.dir.dest %>/'
           }
         ]
       }
     },
     clean: {
-      build: ['build']
+      build: ['<%= config.dir.dest %>']
     }
   });
 
