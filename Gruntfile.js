@@ -27,6 +27,14 @@ module.exports = function(grunt) {
         files: ['<%= config.dir.src %>/**'],
         tasks: ['copy:build']
       }
+    },
+    connect: {
+      server: {
+        options: {
+          base: '<%= config.dir.dest %>',
+          keepalive: true
+        }
+      }
     }
   });
 
