@@ -12,10 +12,14 @@ module.exports = function(grunt) {
           }
         ]
       }
+    },
+    clean: {
+      build: ['build']
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('default', ['copy:build']);
 }
