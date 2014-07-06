@@ -21,6 +21,12 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ['<%= config.dir.dest %>']
+    },
+    watch: {
+      build: {
+        files: ['<%= config.dir.src %>/**'],
+        tasks: ['copy:build']
+      }
     }
   });
 
