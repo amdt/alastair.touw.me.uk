@@ -34,6 +34,11 @@ module.exports = function(grunt) {
           base: '<%= config.dir.dest %>',
           keepalive: true
         }
+      },
+      develop: {
+        options: {
+          base: '<%= config.dir.dest %>'
+        }
       }
     }
   });
@@ -41,4 +46,5 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('default', ['copy:build']);
+  grunt.registerTask('develop', ['connect:develop', 'watch:build']);
 }
