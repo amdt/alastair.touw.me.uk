@@ -1,0 +1,18 @@
+{
+  "name": "Profile",
+  "version": "0.0.0",
+  "authors": [
+    "amdt <alastair@touw.me.uk>"
+  ],
+  "description": "My Personal Site.",
+  "main": "source/index.html",
+  "homepage": "http://alastair.touw.me.uk/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
