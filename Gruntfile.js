@@ -4,7 +4,8 @@ module.exports = function(grunt) {
     config: {
       dir: {
         src: 'source',
-        dest: 'build'
+        dest: 'build',
+        bower: 'bower_components'
       }
     },
     copy: {
@@ -13,7 +14,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= config.dir.src %>/',
-            src: ['**'],
+            src: ['**', '!stylesheets/**'],
             dest: '<%= config.dir.dest %>/'
           }
         ]
@@ -25,7 +26,7 @@ module.exports = function(grunt) {
     watch: {
       build: {
         files: ['<%= config.dir.src %>/**'],
-        tasks: ['copy:build']
+        tasks: ['default']
       }
     },
     connect: {
@@ -40,11 +41,21 @@ module.exports = function(grunt) {
           base: '<%= config.dir.dest %>'
         }
       }
+    },
+    less: {
+      build: {
+        options: {
+          paths: ['<%= config.dir.bower %>']
+        },
+        files: {
+          '<%= config.dir.dest %>/styles.css': '<%= config.dir.src %>/stylesheets/styles.less'
+        }
+      }
     }
   });
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['copy:build']);
+  grunt.registerTask('default', ['copy:build', 'less:build']);
   grunt.registerTask('develop', ['connect:develop', 'watch:build']);
 };
