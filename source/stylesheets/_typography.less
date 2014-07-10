@@ -3,3 +3,16 @@
   font-size: (20 / @base-font-size) * 1rem;
   font-weight: 300;
 }
+
+.hr {
+  border: none; // Remove the default styling first.
+
+  border-bottom-color: @clouds;
+  border-bottom-style: dashed;
+  border-bottom-width: (1 / @base-font-size) * 1em;
+  margin-bottom: @base-spacing-unit * 2;
+  margin-left: @base-spacing-unit;
+  margin-right: @base-spacing-unit;
+  margin-top: @base-spacing-unit * 2;
+  opacity: .65;
+}
