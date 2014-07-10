@@ -1,4 +1,22 @@
+@header-icons-size: (80 / @base-font-size) * 1rem;
+
 .l-header {
   padding-top: 192px; // Relative to background-image on body.
   text-align: center;
+}
+
+.l-header__icons {
+  margin-bottom: @base-spacing-unit;
+
+  svg {
+    .size(@header-icons-size);
+  }
+}
+
+.l-header__avatar {
+  width: @header-icons-size;
+
+  > .avatar {
+    margin-bottom: (4 / @base-font-size) * 1em;
+  }
 }
