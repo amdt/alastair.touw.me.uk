@@ -5,7 +5,8 @@ module.exports = function(grunt) {
       dir: {
         src: 'source',
         dest: 'build',
-        bower: 'bower_components'
+        bower: 'bower_components',
+        tmp: '.temporary'
       }
     },
     copy: {
@@ -21,7 +22,7 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      build: ['<%= config.dir.dest %>']
+      build: ['<%= config.dir.dest %>', '<%= config.dir.tmp %>']
     },
     watch: {
       build: {
@@ -55,14 +56,20 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          '<%= config.dir.dest %>/styles.css': '<%= config.dir.src %>/stylesheets/styles.less'
+          '<%= config.dir.tmp %>/styles.css': '<%= config.dir.src %>/stylesheets/styles.less'
         }
+      }
+    },
+    autoprefixer: {
+      build: {
+        src: '<%= config.dir.tmp %>/styles.css',
+        dest: '<%= config.dir.dest %>/styles.css'
       }
     }
   });
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['copy:build', 'less:build']);
+  grunt.registerTask('default', ['copy:build', 'less:build', 'autoprefixer:build']);
   grunt.registerTask('develop', ['connect:develop', 'watch:build']);
 };
