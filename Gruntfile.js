@@ -47,4 +47,4 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['copy:build']);
   grunt.registerTask('develop', ['connect:develop', 'watch:build']);
-}
+};
