@@ -45,7 +45,14 @@ module.exports = function(grunt) {
     less: {
       build: {
         options: {
-          paths: ['<%= config.dir.bower %>']
+          paths: ['<%= config.dir.bower %>'],
+          customFunctions: {
+            'image-url': function(less, path, imgPath) {
+              imgPath = imgPath || "/images/";
+
+              return "url('" + imgPath + path.value + "')";
+            }
+          }
         },
         files: {
           '<%= config.dir.dest %>/styles.css': '<%= config.dir.src %>/stylesheets/styles.less'
