@@ -26,9 +26,9 @@ module.exports = function(grunt) {
       temporary: ['<%= config.dir.tmp %>']
     },
     watch: {
-      build: {
+      develop: {
         files: ['<%= config.dir.src %>/**'],
-        tasks: ['default']
+        tasks: ['build']
       }
     },
     connect: {
@@ -71,6 +71,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['copy:build', 'less:build', 'autoprefixer:build', 'clean:temporary']);
-  grunt.registerTask('develop', ['connect:develop', 'watch:build']);
+  grunt.registerTask('default', ['build', 'clean:temporary']);
+  grunt.registerTask('build', ['copy:build', 'less:build', 'autoprefixer:build']);
+  grunt.registerTask('develop', ['connect:develop', 'watch:develop']);
 };
