@@ -48,6 +48,7 @@ module.exports = function(grunt) {
       build: {
         options: {
           paths: ['<%= config.dir.bower %>'],
+          cleancss: true,
           customFunctions: {
             'image-url': function(less, path, imgPath) {
               imgPath = imgPath || "/images/";
@@ -57,14 +58,14 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          '<%= config.dir.tmp %>/styles.css': '<%= config.dir.src %>/stylesheets/styles.less'
+          '<%= config.dir.tmp %>/styles.min.css': '<%= config.dir.src %>/stylesheets/styles.less'
         }
       }
     },
     autoprefixer: {
       build: {
-        src: '<%= config.dir.tmp %>/styles.css',
-        dest: '<%= config.dir.dest %>/styles.css'
+        src: '<%= config.dir.tmp %>/styles.min.css',
+        dest: '<%= config.dir.dest %>/styles.min.css'
       }
     }
   });
