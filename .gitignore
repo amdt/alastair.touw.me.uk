@@ -1,2 +1,4 @@
 build/
 .temporary/
+bower_components/
+node_modules/
